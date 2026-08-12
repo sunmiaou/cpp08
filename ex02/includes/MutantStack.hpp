@@ -1,0 +1,64 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   MutantStack.hpp                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tlize <tlize@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/07 14:06:20 by tlize             #+#    #+#             */
+/*   Updated: 2025/10/07 14:06:20 by tlize            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef MUTANTSTACK_HPP
+# define MUTANTSTACK_HPP
+
+# include <stack>
+
+template <typename T>
+class MutantStack : public std::stack<T>
+{
+public:
+	MutantStack()
+	{
+	}
+
+	~MutantStack()
+	{
+	}
+
+	MutantStack(const MutantStack& other) : std::stack<T>(other)
+	{
+	}
+
+	MutantStack& operator=(const MutantStack& other)
+	{
+		std::stack<T>::operator=(other);
+		return (*this);
+	}
+
+	typedef typename std::stack<T>::container_type::iterator iterator;
+	typedef typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
+
+	iterator	begin()
+	{
+		return (this->c.begin());
+	}
+
+	iterator	end()
+	{
+		return (this->c.end());
+	}
+
+	reverse_iterator	rbegin()
+	{
+		return (this->c.rbegin());
+	}
+
+	reverse_iterator	rend()
+	{
+		return (this->c.rend());
+	}
+};
+
+#endif
